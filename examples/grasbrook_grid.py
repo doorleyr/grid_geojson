@@ -8,7 +8,7 @@ import random
 
 file_dir = os.path.dirname('grid_geojson')
 sys.path.append(file_dir)
-from grid_geojson import *  # nopep8
+from module.grid_geojson import *  # nopep8
 
 
 # %% [markdown]
@@ -57,14 +57,6 @@ grid_geo = grasbrook_grid.get_grid_geojson(properties)
 # Convert to string format
 
 # %%
-grid_geo_str = json.dumps(grid_geo)
-
-
-# %%
-f = open("results.geojson", "w+")
-f.write(grid_geo_str)
-f.close()
-# print(grid_geo_str)
-
+json.dump(grid_geo, open("results.geojson", "w"))
 
 # %%
