@@ -79,12 +79,28 @@ grasbrook_grid.plot()
 
 land_use=json.load(open('examples/land_use_data/grasbrook_osm_landuse.geojson'))
 lu_property='fclass'
-grasbrook_grid.get_land_uses(land_use, lu_property)
+grasbrook_grid.get_land_uses(land_use, lu_property, 
+                      include_interactive_cells=True)
+
+################### Hack until we have LU mapping ################
+
+mapped_lu=[]
+for lu in grasbrook_grid.properties['land_use']:
+    if lu=='industrial':
+        mapped_lu.append('M1')
+    else:
+        mapped_lu.append('None')
+grasbrook_grid.properties['land_use']=mapped_lu
+
+#################################################################
 
 grid_geo=grasbrook_grid.get_grid_geojson(add_properties={'height': [10]*len(grasbrook_grid.grid_coords_ll)})
 
 # post to cityIO
-output_url='https://cityio.media.mit.edu/api/table/update/grasbrook/meta_grid'
-r = requests.post(output_url, data = json.dumps(grid_geo))
-print(r)
+output_url='https://cityio.media.mit.edu/api/table/update/grasbrook/'
+r = requests.post(output_url+'meta_grid', data = json.dumps(grid_geo))
+print('Meta_grid: '+r)
+r = requests.post(output_url+'header/interactive_grid_mapping', 
+                  data = json.dumps(grasbrook_grid.int_to_meta_map))
+print('Grid Mapping: '+r)
 
