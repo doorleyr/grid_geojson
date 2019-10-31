@@ -57,8 +57,10 @@ grid_geo=corktown_grid.get_grid_geojson(add_properties={'height': [10]*len(
 # post to cityIO
 output_url='https://cityio.media.mit.edu/api/table/update/corktown/'
 r = requests.post(output_url+'meta_grid', data = json.dumps(grid_geo))
-print('Meta_grid: '+r)
-r = requests.post(output_url+'header/interactive_grid_mapping', 
+print('Meta_grid:')
+print(r)
+r = requests.post(output_url+'objects/interactive_grid_mapping', 
                   data = json.dumps(corktown_grid.int_to_meta_map))
-print('Grid Mapping: '+r)
+print('Grid Mapping:')
+print(r)
 
