@@ -101,7 +101,7 @@ output_url='https://cityio.media.mit.edu/api/table/update/grasbrook/'
 r = requests.post(output_url+'meta_grid', data = json.dumps(grid_geo))
 print('Meta_grid:')
 print(r)
-r = requests.post(output_url+'objects/interactive_grid_mapping', 
+r = requests.post(output_url+'interactive_grid_mapping', 
                   data = json.dumps(grasbrook_grid.int_to_meta_map))
 print('Grid Mapping:')
 print(r)
