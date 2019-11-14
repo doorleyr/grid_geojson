@@ -51,6 +51,10 @@ grasbrook_grid.plot()
 
 grid_geo=grasbrook_grid.get_grid_geojson(add_properties={})
 
+# save JSON files
+# json.dump(grasbrook_grid.int_to_meta_map, open(MAP_FILE_PATH, 'w'))
+# json.dump(grid_geo, open(GEO_FILE_PATH, 'w'))
+
 
 # =============================================================================
 # Interactive Area by Land Use values (all interactive except if LU==None)
@@ -67,19 +71,22 @@ grasbrook_grid.get_land_uses(land_use, lu_property,include_interactive_cells=Tru
 
 interactive=[]
 interactive_id=[]
+int_to_meta_map={}
 
 int_id=0
-for lu in grasbrook_grid.properties['land_use']:
+for meta_ind, lu in enumerate(grasbrook_grid.properties['land_use']):
     if lu=='None':
         interactive.append(False)
         interactive_id.append(None)
     else:
         interactive.append(True)
         interactive_id.append(int_id)
+        int_to_meta_map[int_id]=meta_ind
         int_id+=1
 
 grasbrook_grid.properties['interactive']=interactive
 grasbrook_grid.properties['interactive_id']=interactive_id
+grasbrook_grid.int_to_meta_map=int_to_meta_map
 
 ################### Hack until we have LU mapping ################
 
