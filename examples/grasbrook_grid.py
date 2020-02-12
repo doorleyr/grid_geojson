@@ -69,7 +69,7 @@ json.dump(grid_geo, open('examples/results/grasbrook_geogrid.geojson', 'w'))
 # post to cityIO
 # =============================================================================
 output_url='https://cityio.media.mit.edu/api/table/update/{}'.format(table_name)
-r = requests.post(output_url+'GEOGRID', data = json.dumps(grid_geo))
+r = requests.post(output_url+'/GEOGRID', data = json.dumps(grid_geo))
 print('Geogrid:')
 print(r)
 
