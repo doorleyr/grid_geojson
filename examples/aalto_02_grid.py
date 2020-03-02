@@ -47,7 +47,7 @@ aalto_grid.add_tui_interactive_cells(tui_top_left_row_index, tui_top_left_col_in
                                   tui_num_interactive_rows, tui_num_interactive_cols)
 aalto_grid.flip_tui_ids_y()
 
-grid_geo=aalto_grid.get_grid_geojson(add_properties={}, include_global_properties=False)
+grid_geo=aalto_grid.get_grid_geojson(add_properties={}, include_global_properties=True)
 
 json.dump(grid_geo, open('examples/results/aalto_02_geogrid.geojson', 'w'))
 
