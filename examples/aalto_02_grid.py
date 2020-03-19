@@ -49,6 +49,12 @@ aalto_grid.flip_tui_ids_y()
 
 grid_geo=aalto_grid.get_grid_geojson(add_properties={}, include_global_properties=True)
 
+# =============================================================================
+#  Add types for we-based editing to header
+# =============================================================================
+types=json.load(open('examples/aalto_02_types.json'))
+grid_geo['properties']['header']['types']=types
+
 json.dump(grid_geo, open('examples/results/aalto_02_geogrid.geojson', 'w'))
 
 aalto_grid.plot()

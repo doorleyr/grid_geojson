@@ -36,8 +36,8 @@ crs_epsg = '26917'
 
 tui_top_left_row_index=20
 tui_top_left_col_index=10
-tui_num_interactive_rows=10
-tui_num_interactive_cols=10
+tui_num_interactive_rows=0
+tui_num_interactive_cols=0
 
 
 corktown_grid = Grid(top_left_lon, top_left_lat, rotation,
@@ -45,7 +45,11 @@ corktown_grid = Grid(top_left_lon, top_left_lat, rotation,
 
 corktown_grid.add_tui_interactive_cells(tui_top_left_row_index, tui_top_left_col_index,
                                   tui_num_interactive_rows, tui_num_interactive_cols)
-
+# =============================================================================
+# Set the web interactive region
+# =============================================================================
+interactive_region=json.load(open('examples/interactve_regions/corktown_interactive_area.geojson'))
+corktown_grid.set_web_interactive_region(interactive_region)
 
 land_use=json.load(open('examples/land_use_data/zoning_corktown.geojson'))
 lu_property='ZONING_REV'
@@ -53,31 +57,24 @@ corktown_grid.get_land_uses(land_use, lu_property)
 
 grid_geo=corktown_grid.get_grid_geojson(add_properties={})
 
-# Add the land use mapping to the properties of the geojson
-grid_geo['properties']['LANDUSEINPUT']={
-  "1": "Residential",
-  "2": "Office",
-  "3": "Retail",
-  "4": "Light industrial",
-  "5": "Open_Space",
-  "6": "Parking",
-  "7": "Academic"
-}
+# =============================================================================
+#  Add types for web-based editing to header
+# =============================================================================
+types=json.load(open('examples/corktown_types.json'))
+grid_geo['properties']['types']=types
 
-json.dump(grid_geo, open('examples/results/corktown_geogrid.geojson', 'w'))
-
-corktown_grid.plot()
-
-# INITIALISE GEOGRIDDATA
+# =============================================================================
+# # INITIALISE GEOGRIDDATA
+# =============================================================================
 geogriddata=[{"color": [
-                  255,
-                  255,
-                  255,
-                  180
+                  0,
+                  0,
+                  0,
+                  0
                 ],
-                "height": 0.1,
+                "height": 0,
                 "id": i,
-                "interactive": True,
+                "interactive": grid_geo['features'][i]['properties']['interactive'],
                 "land_use": grid_geo['features'][i]['properties']['land_use'],
                 "name": "empty",
                 "tui_id": None
@@ -91,6 +88,10 @@ r = requests.post(output_url+'/GEOGRID', data = json.dumps(grid_geo))
 print('Geogrid:')
 print(r)
 
-#r = requests.post(output_url+'/GEOGRIDDATA', data = json.dumps(geogriddata))
-#print('Geogriddata:')
-#print(r)
+json.dump(grid_geo, open('examples/results/corktown_geogrid.geojson', 'w'))
+
+corktown_grid.plot()
+
+r = requests.post(output_url+'/GEOGRIDDATA', data = json.dumps(geogriddata))
+print('Geogriddata:')
+print(r)

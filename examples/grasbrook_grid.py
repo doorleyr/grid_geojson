@@ -34,7 +34,7 @@ cell_size = 16
 crs_epsg = '31468'
 
 tui_top_left_row_index=13
-tui_top_left_col_index=13
+tui_top_left_col_index=34
 tui_num_interactive_rows=10
 tui_num_interactive_cols=10
 
@@ -54,7 +54,11 @@ lu_property='fclass'
 grasbrook_grid.get_land_uses(land_use, lu_property)
 
 grid_geo=grasbrook_grid.get_grid_geojson(add_properties={})
-
+# =============================================================================
+#  Add types for we-based editing to header
+# =============================================================================
+types=json.load(open('examples/grasbrook_types.json'))
+grid_geo['properties']['header']['types']=types
 # =============================================================================
 # Set some cells interactivity to False based on Land-Use
 # =============================================================================
