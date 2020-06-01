@@ -1,0 +1,356 @@
+{
+  "None": {
+    "color": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "height": 0,
+    "NAICS": null,
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "9000": 1
+        }
+      }
+    ]
+  },
+  "Office": {
+    "color": [
+      227,
+      26,
+      28,
+      180
+    ],
+    "height": [
+      10
+    ],
+    "NAICS": [
+      {
+        "proportion": 1,
+        "use": {
+          "5400": 1
+        }
+      }
+    ],
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "2310": 1
+        }
+      }
+    ],
+    "sqm_pperson": 20
+  },
+  "Residential": {
+    "color": [
+      255,
+      255,
+      51,
+      180
+    ],
+    "height": [
+      4
+    ],
+    "NAICS": null,
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "1100": 1
+        }
+      }
+    ],
+    "sqm_pperson": 90
+  },
+  "Residential Low Density": {
+    "color": [
+      255,
+      255,
+      51,
+      180
+    ],
+    "height": [
+      4
+    ],
+    "NAICS": null,
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "1100": 1
+        }
+      }
+    ],
+    "sqm_pperson": 160
+  },
+  "Retail": {
+    "color": [
+      251,
+      154,
+      153,
+      180
+    ],
+    "height": [
+      4
+    ],
+    "NAICS": [
+      {
+        "proportion": 1,
+        "use": {
+          "4451": 0.1,
+          "4453": 0.1,
+          "7224": 0.2,
+          "7225": 0.6
+        }
+      }
+    ],
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "2100": 0.6,
+          "2200": 0.4
+        }
+      }
+    ],
+    "sqm_pperson": 400
+  },
+  "Light Industrial": {
+    "color": [
+      202,
+      178,
+      214,
+      180
+    ],
+    "height": [
+      4
+    ],
+    "NAICS": [
+      {
+        "proportion": 1,
+        "use": {
+          "5413": 0.1,
+          "5417": 0.4,
+          "3336": 0.5
+        }
+      }
+    ],
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "3110": 1
+        }
+      }
+    ],
+    "sqm_pperson": 50
+  },
+  "Park": {
+    "color": [
+      178,
+      223,
+      138,
+      180
+    ],
+    "height": [
+      0
+    ],
+    "NAICS": null,
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "7240": 1
+        }
+      }
+    ],
+    "sqm_pperson": 1
+  },
+  "Parking": {
+    "color": [
+      100,
+      100,
+      100,
+      180
+    ],
+    "height": [
+      0
+    ],
+    "NAICS": null,
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "5210": 1
+        }
+      }
+    ],
+    "sqm_pperson": 4
+  },
+  "Institutional": {
+    "color": [
+      31,
+      120,
+      180,
+      180
+    ],
+    "height": [
+      4
+    ],
+    "NAICS": [
+      {
+        "proportion": 0.3,
+        "use": {
+          "7121": 1
+        }
+      },
+      {
+        "proportion": 0.7,
+        "use": {
+          "6111": 0.3,
+          "6113": 0.1,
+          "6115": 0.1,
+          "6116": 0.2,
+          "8133": 0.15,
+          "8134": 0.15
+        }
+      }
+    ],
+    "LBCS": [
+      {
+        "proportion": 0.3,
+        "use": {
+          "6700": 1
+        }
+      },
+      {
+        "proportion": 0.7,
+        "use": {
+          "4100": 0.7,
+          "2310": 0.3
+        }
+      }
+    ],
+    "sqm_pperson": 70
+  },
+  "Industrial": {
+    "color": [
+      106,
+      61,
+      154,
+      180
+    ],
+    "height": [
+      4
+    ],
+    "NAICS": [
+      {
+        "proportion": 1,
+        "use": {
+          "4841": 0.2,
+          "5617": 0.4,
+          "5619": 0.4
+        }
+      }
+    ],
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "3110": 1
+        }
+      }
+    ],
+    "sqm_pperson": 120
+  },
+  "MCS": {
+    "color": [
+      227,
+      26,
+      28,
+      180
+    ],
+    "height": [
+      20
+    ],
+    "NAICS": [
+      {
+        "proportion": 0.1,
+        "use": {
+          "7224": 0.5,
+          "7225": 0.5
+        }
+      },
+      {
+        "proportion": 0.75,
+        "use": {
+          "5414": 0.4,
+          "5415": 0.2,
+          "5417": 0.4
+        }
+      },
+      {
+        "proportion": 0.15,
+        "use": {
+          "7211": 1
+        }
+      }
+    ],
+    "LBCS": [
+      {
+        "proportion": 0.1,
+        "use": {
+          "2200": 1
+        }
+      },
+      {
+        "proportion": 0.75,
+        "use": {
+          "2310": 1
+        }
+      },
+      {
+        "proportion": 0.15,
+        "use": {
+          "1200": 1
+        }
+      }
+    ],
+    "sqm_pperson": 50
+  },
+  "Ford Campus": {
+    "color": [
+      227,
+      26,
+      28,
+      180
+    ],
+    "height": [
+      10
+    ],
+    "NAICS": [
+      {
+        "proportion": 1,
+        "use": {
+          "5414": 0.2,
+          "5415": 0.1,
+          "5417": 0.2,
+          "3336": 0.5
+        }
+      }
+    ],
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "2310": 1
+        }
+      }
+    ],
+    "sqm_pperson": 50
+  }
+}

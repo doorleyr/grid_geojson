@@ -1,0 +1,182 @@
+{
+  "None": {
+    "color": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "height": 0,
+    "NAICS": null,
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "9000": 1
+        }
+      }
+    ]
+  },
+  "Plaza": {
+    "height": [
+      0
+    ],
+    "color": [
+      100,
+      150,
+      240,
+      180
+    ],
+    "NAICS": null,
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "7240": 1
+        }
+      }
+    ],
+    "sqm_pperson": 1
+  },
+  "Park": {
+    "height": [
+      0
+    ],
+    "color": [
+      0,
+      150,
+      220,
+      180
+    ],
+    "NAICS": null,
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "7240": 1
+        }
+      }
+    ],
+    "sqm_pperson": 1
+  },
+  "Residential": {
+    "height": [
+      10
+    ],
+    "color": [
+      252,
+      151,
+      208,
+      180
+    ],
+    "NAICS": null,
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "1100": 1
+        }
+      }
+    ],
+    "sqm_pperson": 90
+  },
+  "Office Tower": {
+    "height": [
+      80
+    ],
+    "color": [
+      247,
+      93,
+      208,
+      180
+    ],
+    "NAICS": [
+      {
+        "proportion": 1,
+        "use": {
+          "5400": 1
+        }
+      }
+    ],
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "2310": 1
+        }
+      }
+    ],
+    "sqm_pperson": 20
+  },
+  "Mix-use": {
+    "height": [
+      50
+    ],
+    "color": [
+      228,
+      13,
+      213,
+      180
+    ],
+    "NAICS": [
+      {
+        "proportion": 0.4,
+        "use": {
+          "4451": 0.1,
+          "4453": 0.1,
+          "7224": 0.2,
+          "7225": 0.6
+        }
+      },
+      {
+        "proportion": 0.6,
+        "use": {
+          "5400": 1
+        }
+      }
+    ],
+    "LBCS": [
+      {
+        "proportion": 0.4,
+        "use": {
+          "2210": 1
+        }
+      },
+      {
+        "proportion": 0.6,
+        "use": {
+          "2310": 1
+        }
+      }
+    ],
+    "sqm_pperson": 20
+  },
+  "Service": {
+    "height": [
+      20
+    ],
+    "color": [
+      133,
+      0,
+      135,
+      180
+    ],
+    "NAICS": [
+      {
+        "proportion": 1,
+        "use": {
+          "9221": 1
+        }
+      }
+    ],
+    "LBCS": [
+      {
+        "proportion": 1,
+        "use": {
+          "4000": 1
+        }
+      }
+    ],
+    "sqm_pperson": 200
+  }
+}

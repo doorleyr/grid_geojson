@@ -50,21 +50,24 @@ grasbrook_grid.plot()
 # Get Land Uses
 # =============================================================================
 land_use=json.load(open('examples/land_use_data/grasbrook_osm_landuse.geojson'))
-lu_property='fclass'
-grasbrook_grid.get_land_uses(land_use, lu_property)
 
-grid_geo=grasbrook_grid.get_grid_geojson(add_properties={})
+parcel_properties={'type': {'from':'fclass', 'default': 'None'}}
+                   
+grasbrook_grid.set_grid_properties_from_shapefile(land_use, parcel_properties)
+
+
+grid_geo=grasbrook_grid.get_grid_geojson(add_properties={'height':[0 for i in range(len(grasbrook_grid.grid_coords_ll))]})
 # =============================================================================
-#  Add types for we-based editing to header
+#  Add types for web-based editing to header
 # =============================================================================
 types=json.load(open('examples/grasbrook_types.json'))
-grid_geo['properties']['header']['types']=types
+grid_geo['properties']['types']=types
 # =============================================================================
 # Set some cells interactivity to False based on Land-Use
 # =============================================================================
 
 for f in grid_geo['features']:
-    if f['properties']['land_use'] in ['scrub', 'None']:
+    if f['properties']['type'] in ['scrub', 'None']:
         f['properties']['interactive']=False
 
 json.dump(grid_geo, open('examples/results/grasbrook_geogrid.geojson', 'w'))

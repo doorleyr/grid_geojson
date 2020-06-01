@@ -60,6 +60,24 @@ json.dump(grid_geo, open('examples/results/aalto_02_geogrid.geojson', 'w'))
 aalto_grid.plot()
 
 # =============================================================================
+# # INITIALISE GEOGRIDDATA
+# =============================================================================
+geogriddata=[{"color": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "height": 0,
+                "id": i,
+                "interactive": grid_geo['features'][i]['properties']['interactive'],
+                "land_use": None,
+                "name": "empty",
+                "tui_id": grid_geo['features'][i]['properties']['tui_id']
+              } for i in range(len(grid_geo['features']))]
+
+
+# =============================================================================
 # post to cityIO
 # =============================================================================
 output_url='https://cityio.media.mit.edu/api/table/update/{}'.format(table_name)
@@ -67,6 +85,6 @@ r = requests.post(output_url+'/GEOGRID', data = json.dumps(grid_geo))
 print('Geogrid:')
 print(r)
 
-#r = requests.post(output_url+'/GEOGRIDDATA', data = json.dumps(geogriddata))
-#print('Geogriddata:')
-#print(r)
+r = requests.post(output_url+'/GEOGRIDDATA', data = json.dumps(geogriddata))
+print('Geogriddata:')
+print(r)

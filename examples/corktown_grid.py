@@ -25,13 +25,13 @@ table_name='corktown'
 top_left_lon =  -83.090119
 top_left_lat = 42.336341
 
-nrows = 46
-ncols = 40
+nrows = 92
+ncols = 80
 
 rotation = 23
 
 
-cell_size = 50
+cell_size = 25
 crs_epsg = '26917'
 
 tui_top_left_row_index=20
@@ -48,38 +48,65 @@ corktown_grid.add_tui_interactive_cells(tui_top_left_row_index, tui_top_left_col
 # =============================================================================
 # Set the web interactive region
 # =============================================================================
-interactive_region=json.load(open('examples/interactve_regions/corktown_interactive_area.geojson'))
+interactive_region=json.load(open('examples/interactive_regions/corktown_interactive_area.geojson'))
 corktown_grid.set_web_interactive_region(interactive_region)
 
-land_use=json.load(open('examples/land_use_data/zoning_corktown.geojson'))
-lu_property='ZONING_REV'
-corktown_grid.get_land_uses(land_use, lu_property)
+parcel_data=json.load(open('examples/land_use_data/corktown_parcels_cs_types.geojson'))
+new_static_blds_data=json.load(open('examples/land_use_data/corktown_static_new.geojson'))
+
+for feat in parcel_data['features']:
+    feat['properties']['static_new']=False
+    
+parcel_data['features'].extend(new_static_blds_data['features'])
+
+parcel_properties={'type': {'from':'CS_LU', 'default': 'None'}, 
+                   'height': {'from':'effective_num_floors', 'default': 0},
+                   'year': {'from':'year_built', 'default': 0},
+                   'static_new': {'from':'static_new', 'default': False}
+                   }
+corktown_grid.set_grid_properties_from_shapefile(parcel_data, parcel_properties)
+
+
 
 grid_geo=corktown_grid.get_grid_geojson(add_properties={})
 
 # =============================================================================
 #  Add types for web-based editing to header
 # =============================================================================
-types=json.load(open('examples/corktown_types.json'))
+types=json.load(open('examples/type_definitions/corktown_types.json'))
 grid_geo['properties']['types']=types
 
 # =============================================================================
 # # INITIALISE GEOGRIDDATA
-# =============================================================================
-geogriddata=[{"color": [
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "height": 0,
-                "id": i,
-                "interactive": grid_geo['features'][i]['properties']['interactive'],
-                "land_use": grid_geo['features'][i]['properties']['land_use'],
-                "name": "empty",
-                "tui_id": None
-              } for i in range(len(grid_geo['features']))]
+## =============================================================================
+#geogriddata=[{"color": [
+#                  0,
+#                  0,
+#                  0,
+#                  0
+#                ],
+#                "height": 0,
+#                "id": i,
+#                "interactive": grid_geo['features'][i]['properties']['interactive'],
+#                "land_use": grid_geo['features'][i]['properties']['land_use'],
+#                "name": "empty",
+#                "tui_id": None
+#              } for i in range(len(grid_geo['features']))]
+geogriddata=[]
+for ic, cell in enumerate(grid_geo['features']):
+    this_geogrid_cell={}
+    this_geogrid_cell['name']=cell['properties']['type']
+#    this_geogrid_cell['name']="empty"
+    this_geogrid_cell['color']=types[cell['properties']['type']]['color']
+#    this_geogrid_cell['color']=[0,0,0,0]
+    this_geogrid_cell['interactive']=cell['properties']['interactive']
+    this_geogrid_cell['height']=cell['properties']['height']
+    this_geogrid_cell['id']=ic
+    this_geogrid_cell['tui_id']=None
+    geogriddata.append(this_geogrid_cell)
 
+#json.dump(geogriddata, open('../Scenarios/ford_base.json', 'w'))    
+    
 # =============================================================================
 # post to cityIO
 # =============================================================================
@@ -90,8 +117,8 @@ print(r)
 
 json.dump(grid_geo, open('examples/results/corktown_geogrid.geojson', 'w'))
 
-corktown_grid.plot()
-
+#corktown_grid.plot()
+#
 r = requests.post(output_url+'/GEOGRIDDATA', data = json.dumps(geogriddata))
 print('Geogriddata:')
 print(r)
